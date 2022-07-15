@@ -1,3 +1,5 @@
+import mongodb from "mongodb"
+const ObjectId = mongodb.ObjectId
 let restaurants
 
 export default class restaurantsDAO{
@@ -38,7 +40,7 @@ export default class restaurantsDAO{
           return { restaurantsList: [], totalNumRestaurants: 0 }
         }
     
-        const displayCursor = cursor.limit(restaurantsPerPage).skip(restaurantsPerPage * page)
+        const displayCursor = cursor.limit(restaurantsPerPage).skip(restaurantsPerPage * page);
     
         try {
           const restaurantsList = await displayCursor.toArray()
@@ -51,5 +53,60 @@ export default class restaurantsDAO{
           )
           return { restaurantsList: [], totalNumRestaurants: 0 }
         }
+    }
+
+    static async getRestaurantByID(id) {
+      try {
+        const pipeline = [
+          {
+              $match: {
+                  _id: new ObjectId(id),
+              },
+          },
+                {
+                    $lookup: {
+                        from: "reviews",
+                        let: {
+                            id: "$_id",
+                        },
+                        pipeline: [
+                            {
+                                $match: {
+                                    $expr: {
+                                        $eq: ["$restaurant_id", "$$id"],
+                                    },
+                                },
+                            },
+                            {
+                                $sort: {
+                                    date: -1,
+                                },
+                            },
+                        ],
+                        as: "reviews",
+                    },
+                },
+                {
+                    $addFields: {
+                        reviews: "$reviews",
+                    },
+                },
+            ]
+        return await restaurants.aggregate(pipeline).next()
+      } catch (e) {
+        console.error(`Something went wrong in getRestaurantByID: ${e}`)
+        throw e
+      }
+    }
+  
+    static async getCuisines() {
+      let cuisines = []
+      try {
+        cuisines = await restaurants.distinct("cuisine")
+        return cuisines
+      } catch (e) {
+        console.error(`Unable to get cuisines, ${e}`)
+        return cuisines
+      }
     }
 }
