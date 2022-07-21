@@ -34,15 +34,13 @@ function App() {
           />
           <Route 
             path="/restaurants/:id"
-            render={(props) => (
-              <Restaurants {...props} user={user} />
-            )}
+            element={<Restaurants user={user} />}
           />
           <Route 
             path="/login"
-            render={(props) => (
-              <Login {...props} login={login} />
-            )}
+            element={
+              <Login login={login} />
+            }
           />
         </Routes>
         </BrowserRouter>
