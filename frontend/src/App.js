@@ -34,7 +34,7 @@ function App() {
           />
           <Route 
             path="/restaurants/:id"
-            element={<Restaurants user={user} />}
+            element={<Restaurants />}
           />
           <Route 
             path="/login"

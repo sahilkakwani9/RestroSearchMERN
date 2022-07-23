@@ -10,7 +10,7 @@ router.route("/reviews")
         .post(reviewsCtrl.apiPostReview)
         .put(reviewsCtrl.apiUpdateReview)
         .delete(reviewsCtrl.apiDeleteReview)
-router.route("/id/:id").get(restaurantsCtrl.apiGetRestaurantById)
+router.route("/:id").get(restaurantsCtrl.apiGetRestaurantById)
 router.route("/cuisines").get(restaurantsCtrl.apiGetRestaurantCuisines)
 router.route("/home").get((req,res)=>{res.send("Now, we are at main")})
 
