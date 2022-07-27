@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import {Link} from "react-router-dom"
 import useStore from "../store/store"
 import RestaurantDataService from "../services/restaurant";
 
@@ -70,7 +71,7 @@ function AddReview(props) {
           <input className='border-black border-4 block m-auto' type="text" value={id} onChange={handleIdChange}/>
         <label className='block'>Review</label>
         <input className='border-black border-4 block m-auto' type="text" value={text} onChange={handleTextChange}/>
-        <button onClick={()=>{addReview();window.history.back()}}>Add</button>
+        <Link to={"/restaurants/"+reId}><button onClick={()=>{addReview();}}>Add</button></Link>
       </div>
       </div>
     )
@@ -81,7 +82,7 @@ function AddReview(props) {
       <div className='block align-center justify-center'>
         <label className='block'>Review</label>
         <input className='border-black border-4 block m-auto' type="text" value={text} onChange={handleTextChange}/>
-        <button onClick={()=>{updateReview(userId, reviewId); window.history.back()}}>Update</button>
+        <Link to={"/restaurants/"+reId}><button onClick={()=>{updateReview(userId, reviewId)}}>Update</button></Link>
       </div>
     </div>
     
