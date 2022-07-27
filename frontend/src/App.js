@@ -42,6 +42,14 @@ function App() {
               <Login login={login} />
             }
           />
+          <Route 
+            path="/add"
+            element={<AddReview value={"Add Review"}/>}
+          />
+          <Route 
+            path="/edit"
+            element={<AddReview value={"Edit Review"}/>}
+          />
         </Routes>
         </BrowserRouter>
       
