@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        One: ["Fjalla One", "cursive"],
+       },
       minHeight: {
         '10xl': '42rem',
       }
