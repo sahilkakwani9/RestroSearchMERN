@@ -54,14 +54,14 @@ function Restaurants(props) {
       restaurant?
       (<div>
           <p class="text-7xl mt-8 dark:text-white font-One font-semibold">{restaurant.name}</p>
-          <p className='flex justify-around text-xl mt-8 ml-20'>
-            <div><strong>Cuisine: </strong>{restaurant.cuisine}</div>
-            <Link to='/add'><button type="button" class="py-3 px-5 mr-2 mb-2 text-md font-medium text-white focus:outline-none bg-black rounded-full border border-black-200 hover:bg-black-100 hover:text-blue-200 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Add Review</button></Link>
-            <div><strong>Address: </strong>{restaurant.address.building} {restaurant.address.street}, {restaurant.address.zipcode}</div>
+          <p className='block md:flex justify-around text-xl mt-8  md:ml-20'>
+            <div className='mb-4 md:mb-0'><strong>Cuisine: </strong>{restaurant.cuisine}</div>
+            <Link to='/add'><button type="button" class="p-3 px-5 mb-4 md:mb-2 text-md font-medium text-white focus:outline-none bg-black rounded-full border border-black-200 hover:bg-black-100 hover:text-blue-200 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Add Review</button></Link>
+            <div className='mb-4 md:mb-0'><strong>Address: </strong>{restaurant.address.building} {restaurant.address.street}, {restaurant.address.zipcode}</div>
           </p>
-          <div className='grid grid-cols-3 gap-24 ml-12 mt-16 w-screen'>
+          <div className='block md:grid grid-cols-3 mx-auto  mt-16 w-screen'>
           {restaurant.reviews.length>0?(restaurant.reviews.map((r)=>{
-            return (<div class="max-w-xs rounded-xl bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            return (<div class="w-80 mx-auto rounded-xl mb-8 md:mb-0 bg-white border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
               <div class="flex justify-end px-4 pt-4">
     </div>
     <div class="flex flex-col items-center pb-10 pt-4">
