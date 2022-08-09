@@ -50,7 +50,7 @@ function Restaurants(props) {
   }, [id]);
 
   return (
-    <div className='bg-[#f3f4f6] min-h-10xl overflow-hidden'>{
+    <div className='bg-[#f3f4f6] min-h-screen overflow-hidden'>{
       restaurant?
       (<div>
           <p class="text-7xl mt-8 dark:text-black font-One font-semibold">{restaurant.name}</p>
@@ -83,7 +83,7 @@ function Restaurants(props) {
               //   <button className='border-[#fa5434] bg-[#f5ab41] border-2 px-4 py-1 rounded-xl' onClick={()=>{deleteReviews(r._id,r.user_id)}}>Delete</button>
               // </div>
               // </div>)
-            })):<h1 className='text-left'>No reviews yet</h1>
+            })):<h1 className='align-center w-screen mt-8 text-5xl font-semibold'>No reviews yet</h1>
           }
           </div>
           
